@@ -1,3 +1,8 @@
+///
+///	4 X 4 행렬의 Transpose, Determinant, Inverse를 구하는 프로그램  
+/// 
+
+
 #include <iostream>
 
 using namespace std;
