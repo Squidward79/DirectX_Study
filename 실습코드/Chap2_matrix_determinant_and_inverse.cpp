@@ -7,15 +7,15 @@
 
 using namespace std;
 
-int calDet(int** src, int excluded_row, int dim); // recursively calculate a determinant
+int calDetRecursive(int** src, int excluded_row, int dim); // recursively calculate a determinant
 void getMinorMat(int** mat, int** src, int excluded_column, int excluded_row, int dim); //Make a small-scale minor matrix.
-void PrintMat(float mat[][4]);
+void printMat(float mat[][4]);
 
 int main()
 {
 	cout << endl << "Matrix :  " << endl;
 	float matrix[4][4] = { {1,1,1,-1}, {1,1,-1,1}, { 1,-1,1,1}, {-1,1,1,1} };
-	PrintMat(matrix);
+	printMat(matrix);
 
 #pragma region Transpose
 
@@ -30,7 +30,7 @@ int main()
 		}
 	}
 
-	PrintMat(transMat);
+	printMat(transMat);
 
 #pragma endregion
 
@@ -54,7 +54,7 @@ int main()
 		}
 	}
 
-	det = calDet(A,0,4); //calculate determinant
+	det = calDetRecursive(A,0,4); //calculate determinant
 
 	cout << endl << "determinant : " << det << endl;
 
@@ -79,13 +79,13 @@ int main()
 		for (int j = 0; j < 4; ++j)
 		{
 			getMinorMat(mat, A, i, j, 4);
-			float cofactor = (int)pow(-1, i + j) * calDet(mat, 0, 3);
+			float cofactor = (int)pow(-1, i + j) * calDetRecursive(mat, 0, 3);
 			transMat[i][j] = cofactor / (float)det;
 		}
 	}
 
 	cout << endl<<"Inverse : " << endl;
-	PrintMat(transMat);
+	printMat(transMat);
 
 	for (int i = 0; i < 3; ++i)
 	{
@@ -98,7 +98,7 @@ int main()
 	return 0;
 }
 
-int calDet(int** src, int excluded_row, int dim)
+int calDetRecursive(int** src, int excluded_row, int dim)
 {
 	int det = 0;
 
@@ -118,7 +118,7 @@ int calDet(int** src, int excluded_row, int dim)
 			}
 			getMinorMat(mat, src, i, excluded_row, dim);
 
-			det += src[0][i] * (int)pow(-1, i) * calDet(mat, 0 ,dim-1);
+			det += src[0][i] * (int)pow(-1, i) * calDetRecursive(mat, 0 ,dim-1);
 
 			for (int i = 0; i < dim - 1; ++i)
 			{
@@ -149,7 +149,7 @@ void getMinorMat(int** mat, int** src, int excluded_column, int excluded_row, in
 	}
 }
 
-void PrintMat(float mat[][4])
+void printMat(float mat[][4])
 {
 
 	for (int i = 0; i < 4; ++i)
