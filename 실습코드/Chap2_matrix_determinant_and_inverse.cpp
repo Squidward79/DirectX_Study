@@ -9,15 +9,8 @@ void PrintMat(float mat[][4]);
 int main()
 {
 	cout << endl << "Matrix :  " << endl;
-	int matrix[4][4] = { {1,1,1,-1}, {1,1,-1,1}, { 1,-1,1,1}, {-1,1,1,1} };
-	for (int i = 0; i < 4; ++i)
-	{
-		for (int j = 0; j < 4; ++j)
-		{
-			cout << matrix[i][j] << " ";
-			if ((j + 1) % 4 == 0) cout << endl;
-		}
-	}
+	float matrix[4][4] = { {1,1,1,-1}, {1,1,-1,1}, { 1,-1,1,1}, {-1,1,1,1} };
+	PrintMat(matrix);
 
 #pragma region Transpose
 
