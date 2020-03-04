@@ -60,22 +60,22 @@ Output Merge (출력 병합)| 출력 병합 |
 - 각각의 Stage에 대한 간단한 설명 
   -
 
-DirectX 렌더링 파이프라인  | 설명 | 필요한 리소스 |
+렌더링 파이프라인  | 설명 | 필요한 리소스 |
 ---|---|---|
-**Input Assembler** | 3차원 모델의 Vertex 정보를 GPU에 전달 하면 GPU에서 기본 도형으로 조립 | Vertex Buffer 
+**Input Assembler**  | 3차원 모델의 Vertex 정보를 GPU에 전달 하면 GPU에서 기본 도형으로 조립 | Vertex Buffer 
  ↓ | |
 **Vertex Shader**  | 정점데이터의 변환, 조명, 텍스쳐매핑 등 다양한 역할을 수행. HLSL 언어를 이용 </br>로컬공간 -> 월드공간 -> 카메라공간 -> 투영공간 으로 변환 </br> 텍스쳐는 Sampler를 통해 정보를 처리| Sampler, Texture Buffer, Constant Buffer
  ↓  |  |
-**Hull Shader** (덮개 쉐이더) | 테셀레이션이 시작되는 단계 </br>폴리곤의 세부도, LOD 메커니즘을 구현하고 분할 방법을 결정</br>  |
+**Hull Shader** </br>(덮개 쉐이더) | 테셀레이션이 시작되는 단계 </br>폴리곤의 세부도, LOD 메커니즘을 구현하고 분할 방법을 결정</br>  |
  ↓ |  |
-Tessellator (테셀레이터)| Hull Shader에서 받은 테셀레이션 계획에 따라 폴리곤 분할  |
+Tessellator </br>(테셀레이터)| Hull Shader에서 받은 테셀레이션 계획에 따라 폴리곤 분할  |
  ↓ | |
- Domain Shader (영역 쉐이더)| 분할된 폴리곤에 굴곡을 주기 위해 vertex의 공간 정보 조절 | Buffer
+ Domain Shader </br>(영역 쉐이더)| 분할된 폴리곤에 굴곡을 주기 위해 vertex의 공간 정보 조절 | Buffer
  ↓ | |
 Geometry Shader (기하 쉐이더) | 메쉬를 primitive 단위로 다룰 수 있게 함 </br> 기하 쉐이더의 출력을 버퍼에 전달하여 폴리곤을 읽거나 새 기하구조 생성 및 파괴, 버퍼에 저장 등이 가능</br> 모델의 폭발, 이펙트 처리에 유용한 쉐이더 |
  ↓ | Clippling 연산 처리 | |
-Rasterize (래스터화) | 벡터 정보를 화면에 출력하기 위해 래스터 이미지로 변환  |
+Rasterize </br>(래스터화) | 벡터 정보를 화면에 출력하기 위해 래스터 이미지로 변환  |
  ↓ | |
-Pixel Shader (픽셀 쉐이더) | 렌더링 대상인 픽셀의 색을 계산하여 최종 색상을 결정</br> 범프매핑, 그림자, 반사광, 투명, 안개, 깊이처리 등 복잡한 연산 수행 | Buffer
+Pixel Shader </br>(픽셀 쉐이더) | 렌더링 대상인 픽셀의 색을 계산하여 최종 색상을 결정</br> 범프매핑, 그림자, 반사광, 투명, 안개, 깊이처리 등 복잡한 연산 수행 | Buffer
  ↓ | |
-Output Merge (출력 병합)| 최종적으로 처리된 부분을 조합하여 출력을 담당하는 단계 </br> | Depth-Stencil Buffer, Render Target
+Output Merge </br>(출력 병합)| 최종적으로 처리된 부분을 조합하여 출력을 담당하는 단계 </br> | Depth-Stencil Buffer, Render Target
