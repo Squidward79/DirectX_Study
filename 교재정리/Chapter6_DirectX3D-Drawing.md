@@ -118,4 +118,24 @@ Vertex / Pixel Shader의 간단한 예제코드)
     인스턴스를 채운 후 ID3D12Device::CreateConstantBufferView를 호출한다.
   ```
 
-- 
+## 6.7 파이프라인에 묶을 자원을 알려주는 Root Signature 
+- 렌더링 파이프라인에서 반드시 묶어야 하는 자원이 무엇이고 그 자원이 쉐이더 입력 레지스터들에 어떻게 대응되는지 정의한다.
+- 즉, 쉐이더가 요구하는 모든 자원을 루트 서명이 제공해야 한다. 
+- 루트 서명은 ID3D12RootSignature 인터페이스로 대표된다.
+  ``` c++
+    Root Signature는 Root Parameter들의 배열로 정의된다.
+    이 때 Root Parameter는 루트 상수, 루트 서술자, 서술자 테이블 일 수 있다.
+  ```
+- 루트 서명은 자원을 실제로 파이프라인에 묶지는 않는다. 다만 무엇을 어떻게 묶어야 할지 알려줄 뿐이다. 
+
+## 6.9 실제로 파이프라인에 묶기 위한 Pipeline State Object
+- 렌더링 파이프라인의 상태를 제어하는 대부분은 Pipeline State Object(파이프라인 상태 객체, PSO)라고 부르는 집합체를 통해 지정된다. 
+- 파이프라인 상태 객체는 ID3D12PipelineState 인터페이스로 대표된다.
+``` c++
+    D3D12_GRAPHICS_PIPELINE_STATE_DESC 구조체를 사용한다.
+    대표적으로 Root Signature, Vertex Shader, Pixel Shader 등 각종 쉐이더가 있고, 
+    그 외에도 스트림 출력, 혼합 방식, 다중 표본화 등 파이프라인 전반에 걸친 상태를 지정한다.
+```
+
+- PSO는 모든 렌더 상태를 포함하지는 않는다. 
+- DirectX는 기본적으로 State Machine이기 때문에, 명시적으로 변경되기 전에는 처음 설정한 값이 그대로 남아있는 것들이 많다.
