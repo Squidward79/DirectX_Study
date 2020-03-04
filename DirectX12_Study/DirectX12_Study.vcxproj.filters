@@ -54,6 +54,9 @@
     <ClCompile Include="..\실습코드\Chap2_matrix_determinant_and_inverse.cpp">
       <Filter>소스 파일\실습</Filter>
     </ClCompile>
+    <ClCompile Include="Chap6_exercise.cpp">
+      <Filter>소스 파일\실습</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\d3d12book\Common\Camera.h">

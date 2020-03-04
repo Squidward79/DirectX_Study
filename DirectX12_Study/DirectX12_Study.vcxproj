@@ -86,7 +86,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>NotSet</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -125,7 +125,9 @@
     <ClCompile Include="..\d3d12book\Common\GameTimer.cpp" />
     <ClCompile Include="..\d3d12book\Common\GeometryGenerator.cpp" />
     <ClCompile Include="..\d3d12book\Common\MathHelper.cpp" />
-    <ClCompile Include="..\실습코드\Chap2_matrix_determinant_and_inverse.cpp" />
+    <ClCompile Include="..\실습코드\Chap2_matrix_determinant_and_inverse.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="BoxApp.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -134,6 +136,9 @@
     </ClCompile>
     <ClCompile Include="Chap2_matrixAlgebra.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Chap6_exercise.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
